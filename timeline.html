@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline y Desglose Visual - Invitación Boda Melquisedec & Briyith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-gold: #c59b58;
+      --gold-dark: #997334;
+      --bg-cream: #faf7f2;
+      --card-bg: #ffffff;
+      --text-main: #4a3e3d;
+      --text-muted: #7d716f;
+      --accent-rose: #e8c5be;
+      --accent-wine: #873836;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2.5rem 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, #fdfbf7 100%);
+      border: 1px solid rgba(197, 155, 88, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(74, 62, 61, 0.05);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background-color: rgba(197, 155, 88, 0.15);
+      color: var(--gold-dark);
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-family: var(--font-script);
+      font-size: 2.4rem;
+      color: var(--primary-gold);
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Reproductor de audio */
+    .audio-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: #fdfaf6;
+      border: 1px dashed var(--primary-gold);
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+    }
+
+    .audio-card p {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gold-dark);
+    }
+
+    /* Grilla de especificaciones técnicas */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .spec-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary-gold);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .spec-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+    }
+
+    .palette-list {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      cursor: pointer;
+      position: relative;
+    }
+
+    /* Timeline principal */
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+      padding: 1rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 30px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-gold), var(--accent-rose), var(--primary-gold));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+      padding-left: 70px;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 17px;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      border: 3px solid var(--primary-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(197, 155, 88, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(74, 62, 61, 0.06);
+      border: 1px solid rgba(197, 155, 88, 0.2);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+
+    @media (max-width: 820px) {
+      .item-card {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-marker {
+        left: 7px;
+      }
+      .timeline-item {
+        padding-left: 50px;
+      }
+    }
+
+    .frame-preview {
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+
+    .frame-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .item-content {
+      padding: 1.8rem;
+    }
+
+    .item-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #f0e9e1;
+      padding-bottom: 0.75rem;
+    }
+
+    .item-time {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--gold-dark);
+      background: rgba(197, 155, 88, 0.12);
+      padding: 0.2rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .item-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .text-box {
+      background: #faf6f0;
+      border-left: 3px solid var(--primary-gold);
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+      font-style: italic;
+      color: #3f3332;
+    }
+
+    .details-table {
+      width: 100%;
+      font-size: 0.88rem;
+      margin-top: 1rem;
+      border-collapse: collapse;
+    }
+
+    .details-table td {
+      padding: 0.4rem 0.2rem;
+      vertical-align: top;
+    }
+
+    .details-table td:first-child {
+      font-weight: 600;
+      color: var(--gold-dark);
+      width: 130px;
+    }
+
+    /* Botón demo */
+    .actions-footer {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 2.5rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid rgba(197, 155, 88, 0.25);
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--gold-dark) 100%);
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(197, 155, 88, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(197, 155, 88, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <span class="badge">Análisis Audiovisual & Desglose Forense</span>
+      <h1>Línea de Tiempo del Video de Invitación</h1>
+      <p class="subtitle">Melquisedec Moreno Vargas & Briyith Lizeh Useche Escamilla</p>
+      <p class="lead">
+        Desglose escena por escena del video vertical (9:16, 720×1280 @ 30fps, 1m 20s) con análisis tipográfico, paleta cromática, textos exactos y capturas de fotogramas extraídas para la réplica web.
+      </p>
+
+      <div class="audio-card">
+        <div>
+          <p>🎵 <strong>Banda Sonora:</strong> "Prometo" (Versión Balada Nupcial)</p>
+          <small style="color:#888;">Audio original extraído del archivo .mp4</small>
+        </div>
+        <audio controls src="assets/audio/musica_fondo.mp3" style="height: 38px;"></audio>
+      </div>
+    </header>
+
+    <!-- Fichas de Estilo y Tipografía -->
+    <section class="specs-grid">
+      <div class="spec-card">
+        <h3>🎨 Paleta Cromática</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Inspirada en el estilo bohemio / romántico con acentos dorados:</p>
+        <div class="palette-list">
+          <div class="color-swatch" style="background: #c59b58;" title="Oro Viejo / Lacre (#c59b58)"></div>
+          <div class="color-swatch" style="background: #faf7f2;" title="Blanco Marfil / Fondo (#faf7f2)"></div>
+          <div class="color-swatch" style="background: #e8c5be;" title="Rosa Empolvado / Acuarela (#e8c5be)"></div>
+          <div class="color-swatch" style="background: #5c4a42;" title="Marrón Texto Elegante (#5c4a42)"></div>
+          <div class="color-swatch" style="background: #8b3a3a;" title="Terracota Floral (#8b3a3a)"></div>
+        </div>
+      </div>
+
+      <div class="spec-card">
+        <h3>✒️ Tipografías Identificadas</h3>
+        <ul style="font-size: 0.85rem; list-style: none; padding-left: 0;">
+          <li><strong>Script / Caligráfica:</strong> <em>Great Vibes</em> / <em>Pinyon Script</em> (Nombres, Títulos Románticos).</li>
+          <li><strong>Serif Clásica:</strong> <em>Cormorant Garamond</em> / <em>Playfair Display</em> (NUESTRA BODA, fechas, versículo).</li>
+          <li><strong>Sans-serif:</strong> <em>Montserrat</em> / <em>Cinzel</em> (Horarios, ubicaciones, mayúsculas pequeñas).</li>
+        </ul>
+      </div>
+
+      <div class="spec-card">
+        <h3>📐 Elementos Gráficos</h3>
+        <ul style="font-size: 0.85rem; list-style: none; padding-left: 0;">
+          <li>✨ Sello de lacre dorado con ramas finas.</li>
+          <li>🌾 Corona de hierba de las pampas secas (pampas grass).</li>
+          <li>🌸 Esquinas florales acuarela (rosas, eucalipto).</li>
+          <li>🕊️ Paloma con sobre y corazón fecha.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Timeline Completo -->
+    <section class="timeline">
+
+      <!-- Escena 1 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">1</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/01_sobre_cerrado.png" alt="Sobre Cerrado y Lacre">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">01. Apertura del Sobre</h2>
+              <span class="item-time">00:00 - 00:02 (2 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Sobre de correspondencia en tono rosa pálido/nude cerrado con solapas cruzadas. En el centro descansa un sello de lacre dorado circular con textura de cera fundida, acompañado de ramitas de hojas doradas estampadas en las esquinas.</p>
+            <table class="details-table">
+              <tr><td>Animación:</td><td>Apertura vertical de la solapa superior e inferior, simulando destapar la tarjeta.</td></tr>
+              <tr><td>Música:</td><td>Entrada suave y melódica de piano e intro vocal "Prometo...".</td></tr>
+              <tr><td>Equivalente Web:</td><td>Animación interactiva de sobre donde el invitado hace clic en el lacre para abrir la invitación.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 2 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">2</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/02_nuestra_boda.png" alt="Nuestra Boda">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">02. Portada Oficial: Nuestra Boda</h2>
+              <span class="item-time">00:02 - 00:09 (7 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Fotografía de los novios abrazados de espaldas contemplando el atardecer (ella de vestido nupcial blanco con espalda descubierta, él de traje negro). La foto está enmarcada en la parte inferior por una corona bohemia de hierba de las pampas, trigo y espigas doradas con destellos luminosos.</p>
+            <div class="text-box">
+              <p style="letter-spacing: 3px; font-weight: 600;">NUESTRA BODA</p>
+              <p style="font-family: var(--font-script); font-size: 1.4rem;">Melquisedec Moreno Vargas<br>Briyith Lizeh Useche Escamilla</p>
+              <p>19 / Diciembre / 2026</p>
+            </div>
+            <table class="details-table">
+              <tr><td>Efectos:</td><td>Partículas de destello estelar (sparkles) parpadeantes sobre las flores y joyas.</td></tr>
+              <tr><td>Transición:</td><td>Fundido suave a blanco con desenfoque hacia el siguiente texto.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 3 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">3</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/03_versiculo.png" alt="Versículo Bíblico">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">03. Versículo Bíblico</h2>
+              <span class="item-time">00:10 - 00:22 (12 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Tarjeta con fondo texturizado de acuarela marfil y rosa suave, orlada con marcos geométricos dorados en las esquinas y un ramillete de rosas de jardín color champagne y terracota.</p>
+            <div class="text-box">
+              <p style="font-family: var(--font-serif); font-size: 1.15rem;">"El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia"</p>
+              <p style="font-family: var(--font-script); font-size: 1.3rem; margin-top: 0.5rem; color: var(--gold-dark);">1 Corintios 13:7</p>
+            </div>
+            <table class="details-table">
+              <tr><td>Animación:</td><td>Aparición progresiva tipo máquina de escribir (typewriter fade) letra por letra o palabra por palabra.</td></tr>
+              <tr><td>Voz / Audio:</td><td>Vocalista canta: <em>"Cómo vencer, cómo amarte sin caer por ti, te miro y puedo decir..."</em></td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 4 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">4</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/04_bendicion_padres.png" alt="Padres y Padrinos">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">04. Bendición de Padres y Padrinos</h2>
+              <span class="item-time">00:23 - 00:35 (12 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Presentación formal de las familias de los contrayentes con tipografía serif y caligrafía artesanal.</p>
+            <div class="text-box">
+              <p style="font-family: var(--font-script); font-size: 1.3rem; color: var(--gold-dark);">Con la bendición de Dios y nuestros padres</p>
+              <br>
+              <strong>Padres del novio</strong><br>
+              Martha Vargas Joya<br>
+              Melquisedec Moreno Cruz<br><br>
+              <strong>Padres de la novia</strong><br>
+              Bertilda Escamilla<br>
+              Héctor Ceferino Useche Bolaños<br><br>
+              <span style="font-family: var(--font-script); font-size: 1.3rem; color: var(--gold-dark);">Nuestros Padrinos</span><br>
+              Maria Clemencia Vargas Joya<br>
+              Jaime Univio Núñez
+            </div>
+            <table class="details-table">
+              <tr><td>Animación:</td><td>Aparición suave secuencial por bloques (primero padres del novio, luego novia, finalmente padrinos).</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 5 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">5</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/05_nos_casamos.png" alt="Nos Casamos y Alianzas">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">05. Anuncio Oficial y Alianzas</h2>
+              <span class="item-time">00:36 - 00:46 (10 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Primer plano emotivo de las manos de los novios entrelazadas luciendo sus argollas matrimoniales de oro con incrustaciones de brillantes. Manicura de novia impecable con perlas.</p>
+            <div class="text-box">
+              <p style="font-family: var(--font-script); font-size: 1.5rem; color: var(--gold-dark);">Nos Casamos</p>
+              <p><strong>Melquisedec Moreno Vargas<br>Briyith Lizeh Useche Escamilla</strong></p>
+              <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1rem 0;">
+                <span>3:00 PM</span>
+                <span style="border: 2px solid var(--primary-gold); border-radius: 50%; padding: 0.5rem 0.8rem; font-weight: 700;">19 DIC</span>
+                <span>2026</span>
+              </div>
+              <p style="font-size: 0.9rem;">Acompáñanos en este gran día</p>
+            </div>
+            <table class="details-table">
+              <tr><td>Efectos:</td><td>Destellos de lente dorada y brillo especular sobre las argollas.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 6 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">6</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/06_ceremonia_recepcion.png" alt="Ceremonia y Recepción">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">06. Ceremonia Religiosa & Recepción</h2>
+              <span class="item-time">00:47 - 00:58 (11 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Datos clave de ubicación y tiempos de los dos eventos principales, con la imagen fotográfica real del templo histórico.</p>
+            <div class="text-box">
+              <p style="font-family: var(--font-script); font-size: 1.4rem; color: var(--gold-dark);">Ceremonia</p>
+              <p><strong>Iglesia San Jerónimo de Nobsa</strong><br>🕒 3:00 pm</p>
+              <hr style="margin: 0.8rem 0; border: none; border-top: 1px dashed rgba(197, 155, 88, 0.4);">
+              <p style="font-family: var(--font-script); font-size: 1.4rem; color: var(--gold-dark);">Recepción</p>
+              <p><strong>Km 1.5 Vía Sogamoso - Tibasosa</strong><br>
+              <strong>Hacienda Bella Luna</strong><br>
+              Costado izquierdo Frente a Biomax<br>
+              📍 | 🕒 5:30 pm</p>
+            </div>
+            <table class="details-table">
+              <tr><td>Recursos:</td><td>Fotografía de la fachada de la Iglesia San Jerónimo de Nobsa con su icónico campanario de cantera.</td></tr>
+              <tr><td>Funcionalidad Web:</td><td>Enlaces automáticos directos a Waze y Google Maps para ambos puntos geográficos.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 7 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">7</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/07_vestimenta_sobres.png" alt="Código de Vestimenta y Regalo">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">07. Código de Vestimenta & Obsequio</h2>
+              <span class="item-time">00:59 - 01:10 (11 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Especificación del protocolo de traje para los invitados e indicación de regalo en sobre.</p>
+            <div class="text-box">
+              <p style="font-family: var(--font-script); font-size: 1.4rem; color: var(--gold-dark);">Vestimenta</p>
+              <p style="font-weight: 600; letter-spacing: 1px;">FORMAL</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Iconografía: Vestido de fiesta rosa largo & traje de etiqueta negro con pajarita.</p>
+              <br>
+              <p style="font-family: var(--font-script); font-size: 1.4rem; color: var(--gold-dark);">Lluvia de Sobres</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Iconografía: Sobres de correspondencia blancos y paloma mensajera con sobre en vuelo.</p>
+            </div>
+            <table class="details-table">
+              <tr><td>Ilustraciones:</td><td>Vectores estilizados con sombras suaves e ilustraciones en acuarela.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Escena 8 -->
+      <article class="timeline-item">
+        <div class="timeline-marker">8</div>
+        <div class="item-card">
+          <div class="frame-preview">
+            <img src="assets/frames/08_te_esperamos.png" alt="Te Esperamos">
+          </div>
+          <div class="item-content">
+            <div class="item-header">
+              <h2 class="item-title">08. Cierre Emotivo: Te Esperamos</h2>
+              <span class="item-time">01:11 - 01:20 (9 seg)</span>
+            </div>
+            <p><strong>Descripción:</strong> Fotografía frontal de los contrayentes sonrientes, con traje formal y peinado recogido, orlada nuevamente por las ramas bohemias de pampas grass y destellos dorados.</p>
+            <div class="text-box">
+              <p style="letter-spacing: 3px; font-weight: 600; color: var(--gold-dark);">TE ESPERAMOS</p>
+              <p style="font-family: var(--font-script); font-size: 1.4rem; margin-top: 0.5rem;">
+                Briyith Lizeh Useche Escamilla<br>
+                Melquisedec Moreno Vargas
+              </p>
+            </div>
+            <table class="details-table">
+              <tr><td>Audio Final:</td><td>Fade out musical con la frase: <em>"Te amaría por mil años más..."</em></td></tr>
+              <tr><td>Llamado a la Acción (Web):</td><td>Botón interactivo de Confirmación de Asistencia (RSVP) vía WhatsApp y calendario Google.</td></tr>
+            </table>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <div class="actions-footer">
+      <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem;">¿Deseas ver la invitación interactiva en vivo?</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Se ha generado una versión web idéntica con animación de sobre, música sincronizada, cuenta regresiva y botones de ubicación.</p>
+      <a href="index.html" class="btn-gold">Abrir Invitación Web Interactiva</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

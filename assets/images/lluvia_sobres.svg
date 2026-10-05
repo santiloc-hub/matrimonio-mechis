@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="envelopeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#fbf8f4"/>
+      <stop offset="100%" stop-color="#eddcd4"/>
+    </linearGradient>
+
+    <linearGradient id="goldSeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe6a3"/>
+      <stop offset="50%" stop-color="#c59b58"/>
+      <stop offset="100%" stop-color="#7a5011"/>
+    </linearGradient>
+
+    <filter id="shadowEnv" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#4a3e3d" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowEnv)">
+    <!-- SOBRE TRASERO INCLINADO -->
+    <g transform="translate(60, 45) rotate(-10)">
+      <rect x="0" y="0" width="130" height="85" rx="4" fill="#f4e8e2" stroke="rgba(197, 155, 88, 0.4)" stroke-width="1.5"/>
+      <path d="M0,0 L65,50 L130,0" fill="none" stroke="rgba(197, 155, 88, 0.4)" stroke-width="1.5"/>
+      <circle cx="65" cy="46" r="10" fill="url(#goldSeal)"/>
+    </g>
+
+    <!-- SOBRE DELANTERO -->
+    <g transform="translate(110, 60) rotate(8)">
+      <rect x="0" y="0" width="145" height="95" rx="5" fill="url(#envelopeGrad1)" stroke="rgba(197, 155, 88, 0.5)" stroke-width="1.5"/>
+      <!-- Solapa posterior -->
+      <polygon points="0,0 145,0 72.5,58" fill="#f6ece6" stroke="rgba(197, 155, 88, 0.35)" stroke-width="1.2"/>
+      <!-- Lacre dorado -->
+      <circle cx="72.5" cy="54" r="13" fill="url(#goldSeal)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))"/>
+      <text x="72.5" y="58" font-size="10" font-family="'Great Vibes', cursive" fill="#442a04" text-anchor="middle" font-weight="bold">M&amp;B</text>
+    </g>
+
+    <!-- PALOMA DE LA PAZ Y EL AMOR CON RAMA DE OLIVO -->
+    <g transform="translate(45, 125) scale(0.9)">
+      <!-- Cuerpo paloma en oro/blanco aperlado -->
+      <path d="M50,45 
+               C58,35 72,25 90,28 
+               C108,30 118,44 135,42 
+               C145,40 152,32 158,25 
+               C154,38 142,50 132,54 
+               C118,60 102,62 88,60 
+               C75,66 58,70 42,65 
+               C46,58 48,52 50,45 Z" 
+            fill="#ffffff" stroke="rgba(197, 155, 88, 0.6)" stroke-width="1.5"/>
+
+      <!-- Ala superior desplegada -->
+      <path d="M80,48 
+               C82,32 94,10 115,0 
+               C118,12 112,24 105,32 
+               C116,22 128,12 140,8 
+               C138,20 130,30 120,38 
+               C132,28 144,22 154,20 
+               C148,34 132,46 112,50 Z" 
+            fill="#ffffff" stroke="rgba(197, 155, 88, 0.6)" stroke-width="1.5"/>
+
+      <!-- Ramita dorada en el pico -->
+      <path d="M42,65 Q30,68 20,62 Q14,56 10,50" fill="none" stroke="url(#goldSeal)" stroke-width="2"/>
+      <circle cx="12" cy="50" r="3" fill="url(#goldSeal)"/>
+      <circle cx="22" cy="55" r="3" fill="url(#goldSeal)"/>
+      <circle cx="18" cy="64" r="3" fill="url(#goldSeal)"/>
+    </g>
+
+    <!-- Destellos dorados flotantes -->
+    <path d="M255,40 L258,48 L266,51 L258,54 L255,62 L252,54 L244,51 L252,48 Z" fill="url(#goldSeal)"/>
+    <path d="M40,30 L42,35 L47,37 L42,39 L40,44 L38,39 L33,37 L38,35 Z" fill="url(#goldSeal)"/>
+  </g>
+</svg>

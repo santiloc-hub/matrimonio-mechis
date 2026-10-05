@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Boda — Melquisedec & Briyith</title>
+  <meta name="description" content="Invitación oficial al matrimonio de Melquisedec Moreno Vargas y Briyith Lizeh Useche Escamilla. Sábado 19 de diciembre de 2026.">
+  <meta name="theme-color" content="#181211">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nuestra Boda — Melquisedec & Briyith">
+  <meta property="og:description" content="Sábado 19 de diciembre de 2026 · Iglesia San Jerónimo de Nobsa & Hacienda Bella Luna">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos principales full-screen responsive -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+  /* Guardián de las animaciones */
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js-motion');
+    setTimeout(function () {
+      if (!root.classList.contains('js-motion-ready')) root.classList.remove('js-motion');
+    }, 3000);
+  })();
+  </script>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. SOBRE DE APERTURA 3D FULL-SCREEN (anime.js)
+       ======================================================== -->
+  <div id="sobre">
+    <div class="sobre" aria-hidden="true">
+      <span class="sobre-fondo"></span>
+      <div class="sobre-tarjeta">
+        <p class="tarjeta-kicker">NUESTRA BODA</p>
+        <p class="tarjeta-nombres">Melquisedec & Briyith</p>
+        <p class="tarjeta-fecha">19 · DICIEMBRE · 2026</p>
+      </div>
+      <span class="sobre-frente"></span>
+      <span class="sobre-solapa"></span>
+      <span class="sobre-sello">
+        <img src="assets/images/sello_lacre_dorado.svg" alt="Sello de Lacre M&B">
+      </span>
+    </div>
+    <button class="sobre-abrir" type="button">Toca para abrir</button>
+    <p class="sobre-pista">Toca donde quieras</p>
+  </div>
+
+  <!-- ========================================================
+       2. REPRODUCTOR DE AUDIO FLOTANTE CON ECUALIZADOR
+       ======================================================== -->
+  <audio id="musica-boda" src="assets/audio/musica_fondo.mp3" loop preload="auto"></audio>
+  <button id="btn-musica" class="btn-musica paused" type="button" aria-label="Música de la boda" title="Reproducir o pausar música">
+    <span class="audio-bars" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <span>Música</span>
+  </button>
+
+  <!-- ========================================================
+       3. ESTRUCTURA COMPLETA FULL-SCREEN RESPONSIVE
+       ======================================================== -->
+  <div class="site-container">
+
+    <!-- HERO PRINCIPAL WIDESCREEN -->
+    <header class="hero">
+      <div class="content-wrap">
+        <div class="hero-grid">
+          
+          <!-- Foto de la Pareja en Alta Definición con destellos -->
+          <div class="hero-photo-wrap">
+            <svg class="rays" viewBox="0 0 200 200" focusable="false" aria-hidden="true"></svg>
+            <div class="hero-photo-box">
+              <img src="assets/frames/02_nuestra_boda.png" alt="Melquisedec y Briyith al atardecer">
+            </div>
+          </div>
+
+          <!-- Textos principales y llamado emotivo -->
+          <div class="hero-text-content">
+            <p class="hero-badge">Con la bendición de Dios y nuestros padres</p>
+            <h1>Nuestra Boda</h1>
+            <p class="couple-script">Melquisedec & Briyith</p>
+            <p class="wedding-date">Sábado 19 de Diciembre de 2026</p>
+            <p class="hero-sub">
+              Unidos por el amor, la fe y la promesa de caminar juntos toda la vida. Te invitamos a celebrar con nosotros este día tan especial e inolvidable.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- TICKER CONTINUO INFINITO DE BORDE A BORDE (100vw) -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>19 de Diciembre de 2026</span><em>✦</em>
+        <span>Iglesia San Jerónimo de Nobsa</span><em>✦</em>
+        <span>Hacienda Bella Luna</span><em>✦</em>
+        <span>Traje Formal</span><em>✦</em>
+        <span>Lluvia de Sobres</span><em>✦</em>
+        <span>3:00 PM</span><em>✦</em>
+        <span>19 de Diciembre de 2026</span><em>✦</em>
+        <span>Iglesia San Jerónimo de Nobsa</span><em>✦</em>
+        <span>Hacienda Bella Luna</span><em>✦</em>
+        <span>Traje Formal</span><em>✦</em>
+        <span>Lluvia de Sobres</span><em>✦</em>
+      </div>
+    </div>
+
+    <main class="content-wrap">
+
+      <!-- VERSÍCULO BÍBLICO CON MARCOS FLORALES EN ALTA RESOLUCIÓN -->
+      <section>
+        <div class="verse-container" data-reveal>
+          <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-top-left" aria-hidden="true">
+          <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-bottom-right" aria-hidden="true">
+          
+          <p class="verse-text">
+            "El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia"
+          </p>
+          <cite class="verse-cite">1 Corintios 13:7</cite>
+        </div>
+      </section>
+
+      <!-- CUENTA REGRESIVA DINÁMICA -->
+      <section>
+        <h2 class="sec-title" data-reveal>Faltan</h2>
+        <p class="sec-intro" data-reveal>Estamos contando cada segundo para encontrarnos en el altar y celebrar juntos.</p>
+        
+        <div class="count" data-stagger>
+          <div><b id="d">--</b><small>Días</small></div>
+          <div><b id="h">--</b><small>Horas</small></div>
+          <div><b id="m">--</b><small>Minutos</small></div>
+          <div><b id="s">--</b><small>Segundos</small></div>
+        </div>
+      </section>
+
+      <!-- SECCIONES DESPLEGABLES INTERACTIVAS EN CUADRÍCULA RESPONSIVE -->
+      <section>
+        <h2 class="sec-title" data-reveal>Detalles del Evento</h2>
+        <p class="sec-intro" data-reveal>Haz clic en cada tarjeta para desplegar la información completa, mapas y recomendaciones:</p>
+
+        <!-- Cuadrícula 2 columnas en Desktop / 1 columna en Móvil -->
+        <div class="cards-responsive-grid" data-stagger>
+
+          <!-- 1. CEREMONIA RELIGIOSA (DESPLEGABLE CON FOTO HD DE NOBSA) -->
+          <div class="desplegable abierto">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-church"></i></div>
+                <div class="header-title-box">
+                  <h3>Ceremonia Religiosa</h3>
+                  <span>Iglesia San Jerónimo de Nobsa · 3:00 PM</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <!-- Foto nítida en alta resolución de la iglesia de Nobsa -->
+              <div class="media-frame">
+                <img src="assets/images/foto_iglesia_nobsa_hd.jpg" alt="Iglesia San Jerónimo de Nobsa, Boyacá">
+              </div>
+              <p style="font-size: 14.5px; color: var(--text-muted); margin-bottom: 14px;">
+                La bendición de Dios se llevará a cabo en la histórica y emblemática <strong>Iglesia San Jerónimo de Nobsa</strong>, Boyacá. Recomendamos llegar con 15 a 20 minutos de anticipación para acompañarnos en el cortejo nupcial.
+              </p>
+              <a href="https://maps.google.com/?q=Iglesia+San+Jeronimo+Nobsa+Boyaca" target="_blank" rel="noopener" class="btn-maps">
+                <i class="fa-solid fa-location-dot"></i> Ver ubicación en Google Maps
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. RECEPCIÓN & FIESTA (DESPLEGABLE) -->
+          <div class="desplegable abierto">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                <div class="header-title-box">
+                  <h3>Recepción & Celebración</h3>
+                  <span>Hacienda Bella Luna · 5:30 PM</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <p style="font-size: 15px; color: var(--text-main); margin-bottom: 8px;">
+                <strong>Ubicación:</strong> Km 1.5 Vía Sogamoso - Tibasosa (Costado izquierdo frente a Biomax).
+              </p>
+              <p style="font-size: 14.5px; color: var(--text-muted); margin-bottom: 14px;">
+                Compartiremos una velada campestre inolvidable con cóctel de bienvenida, cena servida a la mesa, brindis de honor, música en vivo y fiesta. Las instalaciones cuentan con amplio parqueadero privado y seguridad.
+              </p>
+              <a href="https://maps.google.com/?q=Hacienda+Bella+Luna+Tibasosa" target="_blank" rel="noopener" class="btn-maps">
+                <i class="fa-solid fa-location-dot"></i> Ver ubicación en Google Maps
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. BENDICIÓN DE FAMILIAS (DESPLEGABLE) -->
+          <div class="desplegable">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+                <div class="header-title-box">
+                  <h3>Nuestros Padres & Padrinos</h3>
+                  <span>La guía y el amor de nuestras familias</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 10px;">
+                <div>
+                  <h4 style="font-family: var(--font-serif); font-size: 16px; color: var(--gold-dark); text-transform: uppercase;">Padres del Novio</h4>
+                  <p style="font-size: 14px; color: var(--text-main); margin-top: 4px;">
+                    Martha Vargas Joya<br>
+                    Melquisedec Moreno Cruz
+                  </p>
+                </div>
+                <div>
+                  <h4 style="font-family: var(--font-serif); font-size: 16px; color: var(--gold-dark); text-transform: uppercase;">Padres de la Novia</h4>
+                  <p style="font-size: 14px; color: var(--text-main); margin-top: 4px;">
+                    Bertilda Escamilla<br>
+                    Héctor Ceferino Useche Bolaños
+                  </p>
+                </div>
+              </div>
+              <hr style="border: none; border-top: 1px dashed var(--line-gold); margin: 16px 0;">
+              <div>
+                <h4 style="font-family: var(--font-serif); font-size: 16px; color: var(--gold-dark); text-transform: uppercase;">Nuestros Padrinos</h4>
+                <p style="font-size: 14px; color: var(--text-main); margin-top: 4px;">
+                  Maria Clemencia Vargas Joya<br>
+                  Jaime Univio Núñez
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. CÓDIGO DE VESTIMENTA (DESPLEGABLE CON GRÁFICO VECTORIAL HD) -->
+          <div class="desplegable">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="header-title-box">
+                  <h3>Código de Vestimenta</h3>
+                  <span>Formal / Traje de Gala</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <div class="vector-graphic-box">
+                <img src="assets/images/vestimenta_pareja.svg" alt="Traje de Gala y Vestido Formal">
+              </div>
+              <p style="font-size: 14.5px; color: var(--text-muted); margin-bottom: 12px;">
+                Damas: Vestido largo de gala en tonos elegantes. Caballeros: Traje formal oscuro o esmoquin con corbata o corbatín.
+              </p>
+              <div class="swatches" aria-label="Muestras de color para el evento">
+                <div class="sw" style="background: #19273c;"><span>Azul Noche</span></div>
+                <div class="sw" style="background: #df9a8f;"><span>Rosa Palo</span></div>
+                <div class="sw" style="background: #c59b58;"><span>Dorado</span></div>
+                <div class="sw" style="background: #506152;"><span>Verde Salvia</span></div>
+                <div class="sw sw-no" style="background: #ffffff;"><span>Blanco</span></div>
+              </div>
+              <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 14px;">
+                ✦ Nota de cariño: Los tonos <strong>blanco, marfil y beige claro</strong> quedan reservados exclusivamente para la novia.
+              </p>
+            </div>
+          </div>
+
+          <!-- 5. LLUVIA DE SOBRES (DESPLEGABLE CON GRÁFICO VECTORIAL HD) -->
+          <div class="desplegable">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-envelope-open"></i></div>
+                <div class="header-title-box">
+                  <h3>Lluvia de Sobres</h3>
+                  <span>Su presencia es nuestro regalo más apreciado</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <div class="vector-graphic-box">
+                <img src="assets/images/lluvia_sobres.svg" alt="Lluvia de Sobres y Paloma de la Paz">
+              </div>
+              <p style="font-size: 14.5px; color: var(--text-muted);">
+                El mejor regalo que podemos recibir es contar con tu alegría y compañía. Si deseas tener un detalle para acompañar el inicio de nuestro nuevo hogar, dispondremos de un baúl para lluvia de sobres en el acceso a la recepción.
+              </p>
+            </div>
+          </div>
+
+          <!-- 6. FOTO DE ALIANZAS Y COMPROMISO (DESPLEGABLE CON FOTO HD) -->
+          <div class="desplegable">
+            <div class="desplegable-header">
+              <div class="header-left">
+                <div class="header-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="header-title-box">
+                  <h3>Alianzas de Matrimonio</h3>
+                  <span>Símbolo eterno de amor y fidelidad</span>
+                </div>
+              </div>
+              <div class="arrow-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="desplegable-content">
+              <div class="media-frame">
+                <img src="assets/images/foto_anillos_hd.png" alt="Manos de los novios entrelazadas con alianzas de oro">
+              </div>
+              <p style="font-size: 14.5px; color: var(--text-muted); text-align: center;">
+                <em>"Donde tú vayas, yo iré, y donde tú vivas, yo viviré; tu pueblo será mi pueblo y tu Dios mi Dios."</em>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ITINERARIO DEL DÍA (LÍNEA CONECTORA SVG DE ALTA DEFINICIÓN) -->
+      <section>
+        <div class="timeline-section-wrap">
+          <h2 class="sec-title" data-reveal>Itinerario</h2>
+          <p class="sec-intro" data-reveal>Así se vivirá cada instante de nuestra gran celebración:</p>
+          
+          <ol class="run" data-stagger>
+            <svg class="run-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="lineGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+                  <stop offset="0%" stop-color="#c59b58"></stop>
+                  <stop offset="50%" stop-color="#e8c5be"></stop>
+                  <stop offset="100%" stop-color="#8c672b"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M1 0 V100" stroke="url(#lineGrad)"></path>
+            </svg>
+            <li><time datetime="2026-12-19T15:00">3:00</time><h4>Ceremonia Religiosa</h4><p>Ingreso a la Iglesia San Jerónimo de Nobsa y misa solemne.</p></li>
+            <li><time datetime="2026-12-19T16:30">4:30</time><h4>Sesión de Fotos & Traslado</h4><p>Fotografías con invitados y caravana hacia la Hacienda Bella Luna.</p></li>
+            <li><time datetime="2026-12-19T17:30">5:30</time><h4>Cóctel de Bienvenida</h4><p>Llegada a los jardines de la hacienda, música ambiental y brindis inicial.</p></li>
+            <li><time datetime="2026-12-19T18:30">6:30</time><h4>Entrada de los Nuevos Esposos</h4><p>El instante más esperado: ¡recibamos a los novios con aplausos!</p></li>
+            <li><time datetime="2026-12-19T19:00">7:00</time><h4>Primer Vals & Brindis</h4><p>Palabras de bendición familiar, vals nupcial y champaña.</p></li>
+            <li><time datetime="2026-12-19T20:00">8:00</time><h4>Cena Nupcial</h4><p>Menú especial servido a la mesa para todos los asistentes.</p></li>
+            <li><time datetime="2026-12-19T21:30">9:30</time><h4>Fiesta & Hora Loca</h4><p>Apertura oficial de la pista de baile con sorpresas y celebración hasta tarde.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CONFIRMA TU ASISTENCIA (FORMULARIO RSVP COMPLETO) -->
+      <section>
+        <div class="rsvp-wrapper">
+          <h2 class="sec-title" data-reveal>Confirma tu Asistencia</h2>
+          <p class="sec-intro" data-reveal>Agradecemos confirmar tu asistencia antes del 30 de noviembre para organizar con cariño tu puesto en la recepción.</p>
+
+          <div class="rsvp-card" data-reveal>
+            <div class="field">
+              <label for="asistencia">¿Nos acompañas?</label>
+              <select id="asistencia">
+                <option value="si">¡Sí, con mucho gusto ahí estaremos!</option>
+                <option value="tarde">Llegaremos un poco tarde, pero llegamos a celebrar</option>
+                <option value="no">Lamentablemente no podremos asistir esta vez</option>
+              </select>
+            </div>
+
+            <div class="field" id="grupo-acomp">
+              <label for="acomp">Número de personas</label>
+              <select id="acomp">
+                <option value="1">Solo yo (1 persona)</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">6 personas</option>
+              </select>
+            </div>
+
+            <div id="contenedor-asistentes" class="asistentes-contenedor">
+              <!-- Asistentes dinámicos inyectados por JS -->
+            </div>
+
+            <button class="btn-wa" id="enviar-wa" type="button">
+              <i class="fa-brands fa-whatsapp fa-xl"></i> Confirmar Asistencia por WhatsApp
+            </button>
+            
+            <p class="confirm" id="confirm" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER EMOTIVO WIDESCREEN -->
+    <footer>
+      <div class="content-wrap">
+        <div style="max-width: 380px; margin: 0 auto 24px; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1.5px solid var(--line-gold);">
+          <img src="assets/images/foto_pareja_frente_hd.png" alt="Melquisedec y Briyith los esperan sonrientes" style="width: 100%; display: block;">
+        </div>
+        <p class="sig">Te esperamos</p>
+        <p style="font-size: 19px; font-weight: 600; color: #2b1f1e; margin-bottom: 6px;">
+          Melquisedec Moreno Vargas & Briyith Lizeh Useche Escamilla
+        </p>
+        <p style="color: var(--gold-dark); font-size: 15px;">
+          Sábado 19 de Diciembre de 2026 · Nobsa & Tibasosa, Boyacá
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT MODULAR CON ANIME.JS -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

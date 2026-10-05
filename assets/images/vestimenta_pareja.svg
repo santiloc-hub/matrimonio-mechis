@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2524"/>
+      <stop offset="60%" stop-color="#140f0e"/>
+      <stop offset="100%" stop-color="#0a0807"/>
+    </linearGradient>
+
+    <linearGradient id="dressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f9d8d0"/>
+      <stop offset="50%" stop-color="#eeb8ae"/>
+      <stop offset="100%" stop-color="#df9a8f"/>
+    </linearGradient>
+
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8ce98"/>
+      <stop offset="50%" stop-color="#c59b58"/>
+      <stop offset="100%" stop-color="#8c672b"/>
+    </linearGradient>
+
+    <filter id="shadowFmt" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#4a3e3d" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowFmt)">
+    <!-- 1. VESTIDO DE GALA (IZQUIERDA) -->
+    <!-- Corsé / Top -->
+    <path d="M75,35 
+             C82,32 92,38 98,46 
+             C104,38 114,32 121,35 
+             L115,85 
+             C105,92 91,92 81,85 Z" 
+          fill="url(#dressGrad)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    
+    <!-- Cinturón dorado -->
+    <rect x="80" y="83" width="36" height="5" rx="2" fill="url(#goldAcc)"/>
+
+    <!-- Falda acampanada elegante -->
+    <path d="M80,87 
+             L45,195 
+             C65,202 98,206 130,202 
+             C142,200 148,198 151,195 
+             L116,87 Z" 
+          fill="url(#dressGrad)"/>
+
+    <!-- Pliegues de la falda -->
+    <path d="M98,88 Q96,140 85,198" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none"/>
+    <path d="M102,88 Q108,140 115,198" stroke="rgba(168,102,94,0.3)" stroke-width="1.5" fill="none"/>
+
+    <!-- 2. TRAJE ESMOQUIN FORMAL (DERECHA) -->
+    <!-- Chaqueta / Smoking -->
+    <path d="M190,38 
+             L170,95 L176,190 L212,190 L216,108 L220,108 L224,190 L260,190 L266,95 
+             L246,38 Z" 
+          fill="url(#suitGrad)"/>
+
+    <!-- Camisa blanca de etiqueta -->
+    <polygon points="204,40 232,40 226,110 210,110" fill="#ffffff"/>
+
+    <!-- Solapas del esmoquin -->
+    <polygon points="190,38 210,110 198,110 182,70" fill="#0d0a09"/>
+    <polygon points="246,38 226,110 238,110 254,70" fill="#0d0a09"/>
+
+    <!-- Corbatín (Bowtie) -->
+    <path d="M210,48 L226,48 L223,56 L226,64 L210,64 L213,56 Z" fill="url(#goldAcc)"/>
+    <circle cx="218" cy="56" r="3" fill="#ffffff"/>
+
+    <!-- Pañuelo de bolsillo dorado -->
+    <polygon points="240,78 248,78 245,72" fill="url(#goldAcc)"/>
+  </g>
+</svg>

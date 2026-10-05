@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldFiligree" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0b0"/>
+      <stop offset="50%" stop-color="#c59b58"/>
+      <stop offset="100%" stop-color="#8a6428"/>
+    </linearGradient>
+    <linearGradient id="rosePetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fcedea"/>
+      <stop offset="60%" stop-color="#e8b9b0"/>
+      <stop offset="100%" stop-color="#c27b72"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9ab09a"/>
+      <stop offset="100%" stop-color="#677e68"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ESQUINA DE FILIGRANA DORADA -->
+  <path d="M10,120 L10,25 C10,16.7 16.7,10 25,10 L120,10" fill="none" stroke="url(#goldFiligree)" stroke-width="2.5"/>
+  <path d="M20,90 L20,30 C20,24.5 24.5,20 30,20 L90,20" fill="none" stroke="url(#goldFiligree)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  
+  <!-- Espiral de filigrana clásica -->
+  <path d="M120,10 C135,10 145,20 140,32 C135,42 122,38 126,26 C129,18 138,20 138,22" fill="none" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+  <path d="M10,120 C10,135 20,145 32,140 C42,135 38,122 26,126 C18,129 20,138 22,138" fill="none" stroke="url(#goldFiligree)" stroke-width="1.5"/>
+
+  <!-- RAMA DE EUCALIPTO Y HOJAS -->
+  <path d="M25,25 Q55,45 85,35 Q115,25 140,55" fill="none" stroke="url(#leafGrad)" stroke-width="1.8"/>
+  <ellipse cx="60" cy="38" rx="8" ry="14" transform="rotate(-30 60 38)" fill="url(#leafGrad)" opacity="0.85"/>
+  <ellipse cx="90" cy="32" rx="7" ry="13" transform="rotate(25 90 32)" fill="url(#leafGrad)" opacity="0.85"/>
+  <ellipse cx="118" cy="42" rx="7" ry="12" transform="rotate(45 118 42)" fill="url(#leafGrad)" opacity="0.85"/>
+
+  <!-- ROSA DE ACUARELA EN LA ESQUINA -->
+  <g transform="translate(32, 32)">
+    <circle cx="0" cy="0" r="14" fill="url(#rosePetal)"/>
+    <path d="M-8,-4 C-6,-12 6,-12 8,-4 C10,4 0,10 -8,-4 Z" fill="#d9948a" opacity="0.7"/>
+    <path d="M-4,-2 C-2,-7 4,-7 5,-2 C6,3 0,7 -4,-2 Z" fill="#b0645c"/>
+    <circle cx="0" cy="0" r="3" fill="#8f433c"/>
+  </g>
+</svg>
