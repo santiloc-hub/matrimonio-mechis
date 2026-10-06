@@ -1337,6 +1337,123 @@ footer p {
   color: var(--text-muted);
 }
 
+/* ── CRÉDITO DEL CREADOR & SOLUCIONES CON IA ────────────────── */
+.creator-badge {
+  max-width: 680px;
+  margin: 40px auto 0;
+  background: #ffffff;
+  border: 1px solid var(--line-gold);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(74, 62, 61, 0.07);
+  padding: 24px 28px;
+  position: relative;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.creator-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(74, 62, 61, 0.12);
+  border-color: var(--gold);
+}
+
+.creator-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .creator-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.creator-info {
+  flex: 1;
+}
+
+.creator-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 4px;
+}
+
+.creator-label i {
+  color: var(--gold);
+}
+
+.creator-name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #2b1f1e;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+.creator-tagline {
+  font-family: var(--font-sans) !important;
+  font-size: 13.5px !important;
+  line-height: 1.5;
+  color: var(--text-muted) !important;
+  margin: 0 !important;
+}
+
+.btn-creator-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.btn-creator-wa:hover {
+  background: #20ba59;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  color: #ffffff !important;
+}
+
+.btn-creator-wa i {
+  font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .creator-badge {
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .creator-label {
+    justify-content: center;
+  }
+  .btn-creator-wa {
+    width: 100%;
+  }
+}
+
 /* ── RESPONSIVE PARA DISPOSITIVOS MÓVILES ────────────────────── */
 @media (max-width: 600px) {
   .run { padding-left: 70px; }
