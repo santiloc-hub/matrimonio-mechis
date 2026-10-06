@@ -167,6 +167,7 @@ function initDesplegables() {
 function initScrollReveal() {
   if (!motion) return;
 
+  // 5.1 Textos y tarjetas
   const revelables = document.querySelectorAll('[data-reveal], [data-stagger]');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -195,6 +196,32 @@ function initScrollReveal() {
   }, { threshold: 0.15 });
 
   revelables.forEach(el => observer.observe(el));
+
+  // 5.2 Espigas de borde laterales (revelación progresiva y suave al bajar)
+  const laterales = document.querySelectorAll('[data-reveal-side]');
+  const lateralObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      obs.unobserve(entry.target);
+      const el = entry.target;
+      const side = el.getAttribute('data-reveal-side'); // 'left' o 'right'
+      const startX = side === 'left' ? -45 : 45;
+
+      animate(el, {
+        opacity: [0, 1],
+        translateX: [startX, 0],
+        translateY: [24, 0],
+        scale: [0.93, 1],
+        duration: 1200,
+        ease: 'outExpo',
+        onComplete: () => {
+          el.classList.add('revelado');
+        }
+      });
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  laterales.forEach(el => lateralObserver.observe(el));
 }
 
 /* ── 6. Formulario RSVP con Dinamismo y WhatsApp ─────────────── */

@@ -78,7 +78,13 @@
   <div class="site-container">
 
     <!-- HERO PRINCIPAL WIDESCREEN -->
-    <header class="hero">
+    <header class="hero seccion-con-espigas">
+      <div class="espiga-borde espiga-borde--left espiga-borde--hero-left" data-reveal-side="left" aria-hidden="true">
+        <img src="assets/images/espigas_borde_lateral.png" alt="">
+      </div>
+      <div class="espiga-borde espiga-borde--right espiga-borde--hero-right" data-reveal-side="right" aria-hidden="true">
+        <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+      </div>
       <div class="content-wrap">
         <div class="hero-grid">
           
@@ -89,7 +95,6 @@
               <div class="foto-arco">
                 <img src="assets/images/foto_pareja_atardecer_hd.png" alt="Melquisedec y Briyith al atardecer" class="foto-arco-img">
               </div>
-              <img src="assets/images/corona_espigas_marco.png" alt="" class="corona-espigas" aria-hidden="true">
               <div class="sparkle-group" aria-hidden="true">
                 <span class="sparkle-star sparkle-1"></span>
                 <span class="sparkle-star sparkle-2"></span>
@@ -132,38 +137,55 @@
       </div>
     </div>
 
-    <main class="content-wrap">
+    <main class="site-main">
 
       <!-- VERSÍCULO BÍBLICO CON MARCOS FLORALES EN ALTA RESOLUCIÓN -->
-      <section>
-        <div class="verse-container" data-reveal>
-          <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-top-left" aria-hidden="true">
-          <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-bottom-right" aria-hidden="true">
-          
-          <p class="verse-text">
-            "El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia"
-          </p>
-          <cite class="verse-cite">1 Corintios 13:7</cite>
+      <section class="seccion-con-espigas seccion-versiculo">
+        <div class="espiga-borde espiga-borde--left espiga-borde--verse" data-reveal-side="left" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+        </div>
+        <div class="content-wrap">
+          <div class="verse-container" data-reveal>
+            <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-top-left" aria-hidden="true">
+            <img src="assets/images/marco_botanico.svg" alt="" class="corner-flower corner-bottom-right" aria-hidden="true">
+            
+            <p class="verse-text">
+              "El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia"
+            </p>
+            <cite class="verse-cite">1 Corintios 13:7</cite>
+          </div>
         </div>
       </section>
 
       <!-- CUENTA REGRESIVA DINÁMICA -->
-      <section>
-        <h2 class="sec-title" data-reveal>Faltan</h2>
-        <p class="sec-intro" data-reveal>Estamos contando cada segundo para encontrarnos en el altar y celebrar juntos.</p>
-        
-        <div class="count" data-stagger>
-          <div><b id="d">--</b><small>Días</small></div>
-          <div><b id="h">--</b><small>Horas</small></div>
-          <div><b id="m">--</b><small>Minutos</small></div>
-          <div><b id="s">--</b><small>Segundos</small></div>
+      <section class="seccion-con-espigas seccion-cuenta">
+        <div class="espiga-borde espiga-borde--right espiga-borde--count" data-reveal-side="right" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral.png" alt="">
+        </div>
+        <div class="content-wrap">
+          <h2 class="sec-title" data-reveal>Faltan</h2>
+          <p class="sec-intro" data-reveal>Estamos contando cada segundo para encontrarnos en el altar y celebrar juntos.</p>
+          
+          <div class="count" data-stagger>
+            <div><b id="d">--</b><small>Días</small></div>
+            <div><b id="h">--</b><small>Horas</small></div>
+            <div><b id="m">--</b><small>Minutos</small></div>
+            <div><b id="s">--</b><small>Segundos</small></div>
+          </div>
         </div>
       </section>
 
       <!-- SECCIONES DESPLEGABLES INTERACTIVAS EN CUADRÍCULA RESPONSIVE -->
-      <section>
-        <h2 class="sec-title" data-reveal>Detalles del Evento</h2>
-        <p class="sec-intro" data-reveal>Haz clic en cada tarjeta para desplegar la información completa, mapas y recomendaciones:</p>
+      <section class="seccion-con-espigas seccion-detalles">
+        <div class="espiga-borde espiga-borde--left espiga-borde--cards-left" data-reveal-side="left" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral.png" alt="">
+        </div>
+        <div class="espiga-borde espiga-borde--right espiga-borde--cards-right" data-reveal-side="right" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+        </div>
+        <div class="content-wrap">
+          <h2 class="sec-title" data-reveal>Detalles del Evento</h2>
+          <p class="sec-intro" data-reveal>Haz clic en cada tarjeta para desplegar la información completa, mapas y recomendaciones:</p>
 
         <!-- Cuadrícula 2 columnas en Desktop / 1 columna en Móvil -->
         <div class="cards-responsive-grid" data-stagger>
@@ -339,74 +361,91 @@
             </div>
           </div>
 
+          </div>
         </div>
       </section>
 
       <!-- ITINERARIO DEL DÍA (LÍNEA CONECTORA SVG DE ALTA DEFINICIÓN) -->
-      <section>
-        <div class="timeline-section-wrap">
-          <h2 class="sec-title" data-reveal>Itinerario</h2>
-          <p class="sec-intro" data-reveal>Así se vivirá cada instante de nuestra gran celebración:</p>
-          
-          <ol class="run" data-stagger>
-            <svg class="run-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-              <defs>
-                <linearGradient id="lineGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
-                  <stop offset="0%" stop-color="#c59b58"></stop>
-                  <stop offset="50%" stop-color="#e8c5be"></stop>
-                  <stop offset="100%" stop-color="#8c672b"></stop>
-                </linearGradient>
-              </defs>
-              <path d="M1 0 V100" stroke="url(#lineGrad)"></path>
-            </svg>
-            <li><time datetime="2026-12-19T15:00">3:00</time><h4>Ceremonia Religiosa</h4><p>Ingreso a la Iglesia San Jerónimo de Nobsa y misa solemne.</p></li>
-            <li><time datetime="2026-12-19T16:30">4:30</time><h4>Sesión de Fotos & Traslado</h4><p>Fotografías con invitados y caravana hacia la Hacienda Bella Luna.</p></li>
-            <li><time datetime="2026-12-19T17:30">5:30</time><h4>Cóctel de Bienvenida</h4><p>Llegada a los jardines de la hacienda, música ambiental y brindis inicial.</p></li>
-            <li><time datetime="2026-12-19T18:30">6:30</time><h4>Entrada de los Nuevos Esposos</h4><p>El instante más esperado: ¡recibamos a los novios con aplausos!</p></li>
-            <li><time datetime="2026-12-19T19:00">7:00</time><h4>Primer Vals & Brindis</h4><p>Palabras de bendición familiar, vals nupcial y champaña.</p></li>
-            <li><time datetime="2026-12-19T20:00">8:00</time><h4>Cena Nupcial</h4><p>Menú especial servido a la mesa para todos los asistentes.</p></li>
-            <li><time datetime="2026-12-19T21:30">9:30</time><h4>Fiesta & Hora Loca</h4><p>Apertura oficial de la pista de baile con sorpresas y celebración hasta tarde.</p></li>
-          </ol>
+      <section class="seccion-con-espigas seccion-itinerario">
+        <div class="espiga-borde espiga-borde--left espiga-borde--itinerary" data-reveal-side="left" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+        </div>
+        <div class="espiga-borde espiga-borde--right espiga-borde--itinerary-right" data-reveal-side="right" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral.png" alt="">
+        </div>
+        <div class="content-wrap">
+          <div class="timeline-section-wrap">
+            <h2 class="sec-title" data-reveal>Itinerario</h2>
+            <p class="sec-intro" data-reveal>Así se vivirá cada instante de nuestra gran celebración:</p>
+            
+            <ol class="run" data-stagger>
+              <svg class="run-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lineGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="100">
+                    <stop offset="0%" stop-color="#c59b58"></stop>
+                    <stop offset="50%" stop-color="#e8c5be"></stop>
+                    <stop offset="100%" stop-color="#8c672b"></stop>
+                  </linearGradient>
+                </defs>
+                <path d="M1 0 V100" stroke="url(#lineGrad)"></path>
+              </svg>
+              <li><time datetime="2026-12-19T15:00">3:00</time><h4>Ceremonia Religiosa</h4><p>Ingreso a la Iglesia San Jerónimo de Nobsa y misa solemne.</p></li>
+              <li><time datetime="2026-12-19T16:30">4:30</time><h4>Sesión de Fotos & Traslado</h4><p>Fotografías con invitados y caravana hacia la Hacienda Bella Luna.</p></li>
+              <li><time datetime="2026-12-19T17:30">5:30</time><h4>Cóctel de Bienvenida</h4><p>Llegada a los jardines de la hacienda, música ambiental y brindis inicial.</p></li>
+              <li><time datetime="2026-12-19T18:30">6:30</time><h4>Entrada de los Nuevos Esposos</h4><p>El instante más esperado: ¡recibamos a los novios con aplausos!</p></li>
+              <li><time datetime="2026-12-19T19:00">7:00</time><h4>Primer Vals & Brindis</h4><p>Palabras de bendición familiar, vals nupcial y champaña.</p></li>
+              <li><time datetime="2026-12-19T20:00">8:00</time><h4>Cena Nupcial</h4><p>Menú especial servido a la mesa para todos los asistentes.</p></li>
+              <li><time datetime="2026-12-19T21:30">9:30</time><h4>Fiesta & Hora Loca</h4><p>Apertura oficial de la pista de baile con sorpresas y celebración hasta tarde.</p></li>
+            </ol>
+          </div>
         </div>
       </section>
 
       <!-- CONFIRMA TU ASISTENCIA (FORMULARIO RSVP COMPLETO) -->
-      <section>
-        <div class="rsvp-wrapper">
-          <h2 class="sec-title" data-reveal>Confirma tu Asistencia</h2>
-          <p class="sec-intro" data-reveal>Agradecemos confirmar tu asistencia antes del 30 de noviembre para organizar con cariño tu puesto en la recepción.</p>
+      <section class="seccion-con-espigas seccion-rsvp">
+        <div class="espiga-borde espiga-borde--left espiga-borde--rsvp-left" data-reveal-side="left" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+        </div>
+        <div class="espiga-borde espiga-borde--right espiga-borde--rsvp-right" data-reveal-side="right" aria-hidden="true">
+          <img src="assets/images/espigas_borde_lateral.png" alt="">
+        </div>
+        <div class="content-wrap">
+          <div class="rsvp-wrapper">
+            <h2 class="sec-title" data-reveal>Confirma tu Asistencia</h2>
+            <p class="sec-intro" data-reveal>Agradecemos confirmar tu asistencia antes del 30 de noviembre para organizar con cariño tu puesto en la recepción.</p>
 
-          <div class="rsvp-card" data-reveal>
-            <div class="field">
-              <label for="asistencia">¿Nos acompañas?</label>
-              <select id="asistencia">
-                <option value="si">¡Sí, con mucho gusto ahí estaremos!</option>
-                <option value="tarde">Llegaremos un poco tarde, pero llegamos a celebrar</option>
-                <option value="no">Lamentablemente no podremos asistir esta vez</option>
-              </select>
+            <div class="rsvp-card" data-reveal>
+              <div class="field">
+                <label for="asistencia">¿Nos acompañas?</label>
+                <select id="asistencia">
+                  <option value="si">¡Sí, con mucho gusto ahí estaremos!</option>
+                  <option value="tarde">Llegaremos un poco tarde, pero llegamos a celebrar</option>
+                  <option value="no">Lamentablemente no podremos asistir esta vez</option>
+                </select>
+              </div>
+
+              <div class="field" id="grupo-acomp">
+                <label for="acomp">Número de personas</label>
+                <select id="acomp">
+                  <option value="1">Solo yo (1 persona)</option>
+                  <option value="2">2 personas</option>
+                  <option value="3">3 personas</option>
+                  <option value="4">4 personas</option>
+                  <option value="5">5 personas</option>
+                  <option value="6">6 personas</option>
+                </select>
+              </div>
+
+              <div id="contenedor-asistentes" class="asistentes-contenedor">
+                <!-- Asistentes dinámicos inyectados por JS -->
+              </div>
+
+              <button class="btn-wa" id="enviar-wa" type="button">
+                <i class="fa-brands fa-whatsapp fa-xl"></i> Confirmar Asistencia por WhatsApp
+              </button>
+              
+              <p class="confirm" id="confirm" role="status" aria-live="polite"></p>
             </div>
-
-            <div class="field" id="grupo-acomp">
-              <label for="acomp">Número de personas</label>
-              <select id="acomp">
-                <option value="1">Solo yo (1 persona)</option>
-                <option value="2">2 personas</option>
-                <option value="3">3 personas</option>
-                <option value="4">4 personas</option>
-                <option value="5">5 personas</option>
-                <option value="6">6 personas</option>
-              </select>
-            </div>
-
-            <div id="contenedor-asistentes" class="asistentes-contenedor">
-              <!-- Asistentes dinámicos inyectados por JS -->
-            </div>
-
-            <button class="btn-wa" id="enviar-wa" type="button">
-              <i class="fa-brands fa-whatsapp fa-xl"></i> Confirmar Asistencia por WhatsApp
-            </button>
-            
-            <p class="confirm" id="confirm" role="status" aria-live="polite"></p>
           </div>
         </div>
       </section>
@@ -414,14 +453,19 @@
     </main>
 
     <!-- FOOTER EMOTIVO WIDESCREEN CON CORONA DE ESPIGAS -->
-    <footer>
+    <footer class="seccion-con-espigas seccion-footer">
+      <div class="espiga-borde espiga-borde--left espiga-borde--footer-left" data-reveal-side="left" aria-hidden="true">
+        <img src="assets/images/espigas_borde_lateral.png" alt="">
+      </div>
+      <div class="espiga-borde espiga-borde--right espiga-borde--footer-right" data-reveal-side="right" aria-hidden="true">
+        <img src="assets/images/espigas_borde_lateral_2.png" alt="">
+      </div>
       <div class="content-wrap">
         <div class="farewell-photo-stage">
           <figure class="foto-corona foto-corona--despedida">
             <div class="foto-arco">
               <img src="assets/images/foto_pareja_frente_hd.png" alt="Melquisedec y Briyith los esperan sonrientes" class="foto-arco-img">
             </div>
-            <img src="assets/images/corona_espigas_marco.png" alt="" class="corona-espigas" aria-hidden="true">
             <div class="sparkle-group" aria-hidden="true">
               <span class="sparkle-star sparkle-f1"></span>
               <span class="sparkle-star sparkle-f2"></span>

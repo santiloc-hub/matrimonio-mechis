@@ -28,7 +28,9 @@ matrimonio mechis/
         ├── foto_pareja_atardecer.png
         ├── foto_anillos.png
         ├── foto_pareja_frente.png
-        └── corona_espigas_marco.png  # Corona de pampas/espigas en PNG transparente (se superpone a las fotos vía CSS)
+        ├── corona_espigas_marco.png      # Corona de pampas/espigas en PNG transparente
+        ├── espigas_borde_lateral.png    # Guirnalda vertical de espigas y pampas para bordes
+        └── espigas_borde_lateral_2.png  # Variante 2 con rosas champagne y espigas para bordes
 ```
 
 ---
@@ -66,6 +68,13 @@ matrimonio mechis/
 
 ## 🚀 Cómo Visualizarlo
 
-Puedes abrir directamente en cualquier navegador:
-1. **El Timeline Desglosado:** Haz doble clic en [`matrimonio mechis/timeline.html`](timeline.html).
-2. **La Invitación Web Interactiva:** Haz doble clic en [`matrimonio mechis/index.html`](index.html).
+### Servidor Local Recomendado
+Para visualizar con todos los módulos de audio y animaciones 3D activas:
+```bash
+node server.cjs
+```
+Y abre en tu navegador:
+- Invitación oficial con sobre interactivo: **http://localhost:8080**
+- Vista previa directa (sin esperar sobre): **http://localhost:8080?abierto=1**
+- Timeline comparativo escena por escena: **http://localhost:8080/timeline.html**
+

@@ -10,6 +10,11 @@ export function abrirSobre() {
   const escena = document.getElementById('sobre');
   if (!escena) return Promise.resolve();
 
+  if (new URLSearchParams(window.location.search).has('abierto')) {
+    escena.remove();
+    return Promise.resolve();
+  }
+
   const boton = escena.querySelector('.sobre-abrir');
   const pista = escena.querySelector('.sobre-pista');
   const solapa = escena.querySelector('.sobre-solapa');
