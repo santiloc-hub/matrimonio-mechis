@@ -27,7 +27,8 @@ matrimonio mechis/
         ├── foto_iglesia_nobsa.png
         ├── foto_pareja_atardecer.png
         ├── foto_anillos.png
-        └── foto_pareja_frente.png
+        ├── foto_pareja_frente.png
+        └── corona_espigas_marco.png  # Corona de pampas/espigas en PNG transparente (se superpone a las fotos vía CSS)
 ```
 
 ---
