@@ -107,14 +107,14 @@ body {
   display: block;
 }
 
-/* Posicionamiento lateral */
+/* Posicionamiento lateral (orgánico y sin cortes) */
 .espiga-borde--left {
-  left: -8px;
+  left: 0px;
   transform-origin: left center;
 }
 
 .espiga-borde--right {
-  right: -8px;
+  right: 0px;
   transform-origin: right center;
 }
 .espiga-borde--right img {
@@ -124,57 +124,48 @@ body {
 /* Posiciones verticales por sección */
 .espiga-borde--hero-left {
   top: 15px;
-  left: -12px;
+  left: -4px;
 }
 .espiga-borde--hero-right {
   top: 60px;
-  right: -12px;
+  right: -4px;
 }
 
 .espiga-borde--verse {
   top: 10px;
-  left: -15px;
+  left: -4px;
 }
 
 .espiga-borde--count {
   top: 25px;
-  right: -15px;
+  right: -4px;
 }
 
 .espiga-borde--cards-left {
   top: 120px;
-  left: -18px;
+  left: -6px;
 }
 .espiga-borde--cards-right {
   top: 55%;
-  right: -18px;
-}
-
-.espiga-borde--itinerary {
-  top: 80px;
-  left: -15px;
-}
-.espiga-borde--itinerary-right {
-  bottom: 80px;
-  right: -15px;
+  right: -6px;
 }
 
 .espiga-borde--rsvp-left {
   top: 40px;
-  left: -16px;
+  left: -4px;
 }
 .espiga-borde--rsvp-right {
   bottom: 20px;
-  right: -16px;
+  right: -4px;
 }
 
 .espiga-borde--footer-left {
   top: 15px;
-  left: -12px;
+  left: -4px;
 }
 .espiga-borde--footer-right {
   top: 40px;
-  right: -12px;
+  right: -4px;
 }
 
 /* Animación sutil de brisa natural */
@@ -198,15 +189,15 @@ body {
 /* Ajustes adaptativos en móviles */
 @media (max-width: 768px) {
   .espiga-borde {
-    width: clamp(65px, 18vw, 98px);
-    opacity: 0.78;
+    width: clamp(70px, 20vw, 110px);
+    opacity: 0.82;
     filter: drop-shadow(0 6px 14px rgba(90, 70, 50, 0.1));
   }
   .espiga-borde--left {
-    left: -22px;
+    left: -10px;
   }
   .espiga-borde--right {
-    right: -22px;
+    right: -10px;
   }
 }
 
@@ -216,10 +207,10 @@ body {
     width: 220px;
   }
   .espiga-borde--left {
-    left: 8px;
+    left: 12px;
   }
   .espiga-borde--right {
-    right: 8px;
+    right: 12px;
   }
 }
 
