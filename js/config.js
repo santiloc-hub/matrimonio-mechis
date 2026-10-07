@@ -26,4 +26,4 @@ export const TIMEOUT_MS = 10000;
 /**
  * Teléfono para confirmar por WhatsApp si el usuario elige esa opción
  */
-export const TELEFONO_WHATSAPP_NOVIOS = '573105508171';
+export const TELEFONO_WHATSAPP_NOVIOS = '573202503598';

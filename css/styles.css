@@ -1225,7 +1225,7 @@ section {
   margin-bottom: 8px;
 }
 
-.field input, .field select {
+.field input, .field select, .field textarea {
   width: 100%;
   padding: 14px 16px;
   background: #ffffff;
@@ -1237,10 +1237,16 @@ section {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.field input:focus, .field select:focus {
+.field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(197, 155, 88, 0.25);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 85px;
+  line-height: 1.5;
 }
 
 .asistentes-contenedor {

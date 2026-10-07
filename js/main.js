@@ -280,6 +280,8 @@ function initRSVP() {
   const btnWA = document.getElementById('enviar-wa');
   const cajaConfirm = document.getElementById('confirm');
 
+  const campoMensaje = document.getElementById('mensaje-novios');
+
   if (!campoAsistencia || !campoAcomp || !contenedor) return;
 
   let enviando = false;
@@ -384,6 +386,7 @@ function initRSVP() {
       const textoAsistencia = campoAsistencia.options[campoAsistencia.selectedIndex].text;
       const titular = nombres[0];
       const total = nombres.length;
+      const notaMensaje = campoMensaje ? campoMensaje.value.trim() : '';
 
       enviando = true;
       btnEnviar.disabled = true;
@@ -399,7 +402,8 @@ function initRSVP() {
             token: SHEETS_TOKEN,
             nombre: nombres[i],
             asistencia: textoAsistencia,
-            personas: asignacion
+            personas: asignacion,
+            mensaje: notaMensaje
           });
         }
 
@@ -407,8 +411,9 @@ function initRSVP() {
         btnEnviar.textContent = '✓ ¡Registrado con éxito!';
         campoAsistencia.disabled = true;
         campoAcomp.disabled = true;
+        if (campoMensaje) campoMensaje.disabled = true;
         contenedor.querySelectorAll('input').forEach(inp => { inp.disabled = true; });
-        notificar(`¡Muchas gracias, ${titular.split(' ')[0]}! Tu asistencia quedó registrada en la lista oficial.`);
+        notificar(`¡Muchas gracias, ${titular.split(' ')[0]}! Tu respuesta quedó registrada en la lista oficial.`);
       } catch (err) {
         btnEnviar.disabled = false;
         btnEnviar.textContent = 'Reintentar confirmación';
@@ -419,33 +424,73 @@ function initRSVP() {
     });
   }
 
-  // 2. Envío a WhatsApp (con copia desatendida a Sheets si está configurado)
+  // 2. Envío a WhatsApp (con mensaje dinámico por estado y copia desatendida a Sheets)
   if (btnWA) {
     btnWA.addEventListener('click', () => {
       const nombres = obtenerNombres();
       if (!nombres) return;
 
-      const estadoMap = {
-        'si': '¡Sí, con mucha alegría confirmamos nuestra asistencia!',
-        'tarde': 'Llegaremos un poco tarde a la recepción, pero ahí estaremos para celebrar con ustedes.',
-        'no': 'Lamentablemente no podremos acompañarlos en esta ocasión, pero les deseamos la mayor bendición.'
-      };
+      const valAsistencia = campoAsistencia.value;
+      const mensajeNovios = campoMensaje ? campoMensaje.value.trim() : '';
+      const total = nombres.length;
+      const personasTxt = total === 1 ? '1 persona' : `${total} personas`;
+      const listaNombres = nombres.map((n, idx) => `${idx + 1}. ${n}`).join('\n');
 
-      const estadoTxt = estadoMap[campoAsistencia.value] || 'Confirmación de asistencia';
-      const listaNombres = nombres.map((n, idx) => `• ${n}`).join('\n');
+      let mensaje = '';
 
-      const mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
-        `*Estado:* ${estadoTxt}\n\n` +
-        `*Personas confirmadas (${nombres.length}):*\n${listaNombres}\n\n` +
-        `¡Muchas felicidades y bendiciones en su matrimonio! ✨`;
+      if (valAsistencia === 'si') {
+        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
+          `¡Hola Melquisedec y Briyith! ✨\n` +
+          `Queremos confirmar con gran alegría que *SÍ los acompañaremos* en la celebración de su matrimonio.\n\n` +
+          `📋 *Detalles de la confirmación:*\n` +
+          `• *Titular:* ${nombres[0]}\n` +
+          `• *Total de asistentes:* ${personasTxt}\n\n` +
+          `👥 *Lista de invitados:*\n${listaNombres}\n\n`;
+
+        if (mensajeNovios) {
+          mensaje += `💌 *Mensaje / Dedicatoria:*\n"${mensajeNovios}"\n\n`;
+        }
+
+        mensaje += `¡Estamos muy emocionados de compartir este día tan especial junto a ustedes! Que Dios bendiga su nuevo hogar. 🥂✨`;
+
+      } else if (valAsistencia === 'tarde') {
+        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
+          `¡Hola Melquisedec y Briyith! ✨\n` +
+          `Confirmamos nuestra asistencia a su boda. *Llegaremos un poco más tarde, directamente a la recepción* para celebrar y brindar con ustedes en la Hacienda Bella Luna.\n\n` +
+          `📋 *Detalles de la confirmación:*\n` +
+          `• *Titular:* ${nombres[0]}\n` +
+          `• *Total de asistentes:* ${personasTxt}\n\n` +
+          `👥 *Lista de invitados:*\n${listaNombres}\n\n`;
+
+        if (mensajeNovios) {
+          mensaje += `💌 *Mensaje / Dedicatoria:*\n"${mensajeNovios}"\n\n`;
+        }
+
+        mensaje += `¡Con todo el cariño del mundo para celebrar este gran momento! Muchas bendiciones en su matrimonio. 🥂✨`;
+
+      } else {
+        // Rechazo cordial / Excusa
+        mensaje = `🕊️ *RESPUESTA DE INVITACIÓN — BODA MELQUISEDEC & BRIYITH*\n\n` +
+          `¡Hola Melquisedec y Briyith! ✨\n` +
+          `Agradecemos de todo corazón la hermosa invitación a su matrimonio.\n\n` +
+          `Lamentablemente en esta ocasión *no podremos acompañarlos físicamente* a la celebración.\n\n` +
+          `📋 *Datos:*\n` +
+          `• *Nombre:* ${nombres[0]}\n\n`;
+
+        if (mensajeNovios) {
+          mensaje += `💌 *Mensaje / Dedicatoria:*\n"${mensajeNovios}"\n\n`;
+        }
+
+        mensaje += `Aunque no podamos estar presentes, les enviamos todo nuestro cariño, admiración y los mejores deseos en esta nueva etapa que inician. ¡Que Dios bendiga grandemente su unión y su hogar! 🤍✨`;
+      }
 
       const urlWA = `https://wa.me/${TELEFONO_WHATSAPP_NOVIOS}?text=${encodeURIComponent(mensaje)}`;
 
       // Si Sheets ya está configurado, guardamos silenciosamente en segundo plano
       if (SHEETS_URL !== SHEETS_URL_SIN_CONFIGURAR && !registrado) {
-        const esRechazo = campoAsistencia.value === 'no';
+        const esRechazo = valAsistencia === 'no';
         const titular = nombres[0];
-        const total = nombres.length;
+        const textoAsistencia = campoAsistencia.options[campoAsistencia.selectedIndex].text;
         for (let i = 0; i < total; i++) {
           const asignacion = esRechazo
             ? 'No asiste'
@@ -453,8 +498,9 @@ function initRSVP() {
           enviarASheets({
             token: SHEETS_TOKEN,
             nombre: nombres[i],
-            asistencia: estadoTxt,
-            personas: asignacion
+            asistencia: textoAsistencia,
+            personas: asignacion,
+            mensaje: mensajeNovios
           }).catch(() => {});
         }
       }
