@@ -4,9 +4,9 @@
 
 /**
  * URL de la aplicación web de Google Apps Script. Termina en /exec
- * Reemplaza esta URL con la que te entregue Google Apps Script tras 'Implementar'.
+ * Conectada a la hoja de Google Sheets de la Boda.
  */
-export const SHEETS_URL = 'PEGA-AQUI-LA-URL-DEL-APPS-SCRIPT';
+export const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzPgv-DubaKDDOw_olWkZUlzbITABRAu5g3o-qCtLfZP_cMk8xuA_Ug9ClesszJn5aD/exec';
 
 /**
  * Token de seguridad que debe coincidir exactamente con el TOKEN en apps-script.gs
