@@ -163,11 +163,11 @@ function initDesplegables() {
   });
 }
 
-/* ── 5. Revelación por Scroll (Scroll Reveal) ───────────────── */
+/* ── 5. Revelación por Scroll (Scroll Reveal una sola vez, quedan fijas) ── */
 function initScrollReveal() {
   if (!motion) return;
 
-  // 5.1 Textos y tarjetas
+  // 5.1 Textos, títulos y tarjetas (aparecen al bajar la primera vez y quedan fijos)
   const revelables = document.querySelectorAll('[data-reveal], [data-stagger]');
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -182,22 +182,32 @@ function initScrollReveal() {
           y: [20, 0],
           duration: D_BASE,
           delay: stagger(STAGGER),
-          ease: 'outExpo'
+          ease: 'outExpo',
+          onComplete: () => {
+            hijos.forEach(h => {
+              h.style.opacity = '1';
+              h.style.transform = 'none';
+            });
+          }
         });
       } else {
         animate(el, {
           opacity: [0, 1],
           y: [24, 0],
           duration: D_BASE,
-          ease: 'outExpo'
+          ease: 'outExpo',
+          onComplete: () => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
         });
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   revelables.forEach(el => observer.observe(el));
 
-  // 5.2 Espigas de borde laterales (revelación progresiva y suave al bajar)
+  // 5.2 Espigas y rosas laterales (se revelan suavemente una vez y quedan fijas)
   const laterales = document.querySelectorAll('[data-reveal-side]');
   const lateralObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
@@ -219,7 +229,7 @@ function initScrollReveal() {
         }
       });
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
   laterales.forEach(el => lateralObserver.observe(el));
 }

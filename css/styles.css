@@ -857,11 +857,11 @@ section {
   margin-top: 4px;
 }
 
-/* ── GRID DE SECCIONES DESPLEGABLES (RESPONSIVE COMPUTADOR & MÓVIL) ── */
+/* ── TARJETAS DE INFORMACIÓN FIJAS (ORDEN LÓGICO & SIN DESPLEGAR) ── */
 .cards-responsive-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 28px;
 }
 
 @media (min-width: 768px) {
@@ -870,93 +870,94 @@ section {
   }
 }
 
-@media (min-width: 1100px) {
-  .cards-responsive-grid.grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.desplegable {
+.tarjeta-info {
   background: var(--paper-card);
   border: 1px solid var(--line-gold);
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 26px rgba(60, 45, 40, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.desplegable:hover {
+.tarjeta-info:hover {
+  transform: translateY(-3px);
   border-color: var(--gold);
-  box-shadow: 0 10px 30px rgba(197, 155, 88, 0.18);
+  box-shadow: 0 14px 34px rgba(197, 155, 88, 0.18);
 }
 
-.desplegable.abierto {
-  border-color: var(--gold);
-}
-
-.desplegable-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 24px;
-  cursor: pointer;
-  user-select: none;
+.tarjeta-info-header {
+  padding: 22px 24px 18px;
   background: linear-gradient(135deg, #ffffff 0%, #fdf9f4 100%);
+  border-bottom: 1px solid rgba(197, 155, 88, 0.25);
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.header-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(197, 155, 88, 0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold-dark);
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.header-title-box h3 {
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 700;
-  color: #2b1f1e;
-}
-
-.header-title-box span {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.arrow-icon {
-  color: var(--gold);
-  font-size: 16px;
-  transition: transform 0.3s ease;
-}
-
-.desplegable.abierto .arrow-icon {
-  transform: rotate(180deg);
-}
-
-.desplegable-content {
-  display: none;
-  padding: 20px 24px 26px;
-  border-top: 1px dashed rgba(197, 155, 88, 0.3);
+.tarjeta-info-body {
+  padding: 22px 24px 26px;
   background: #faf5ee;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.desplegable.abierto .desplegable-content {
+/* ── VERSÍCULO BÍBLICO HEROICO CON FONDO FLORAL DE ROSAS Y ESPIGAS ── */
+.tarjeta-versiculo-rosas {
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 14px 40px rgba(90, 70, 60, 0.12);
+  background-color: #fcf9f5;
+  background-image: url('../assets/images/tarjeta_versiculo_rosas_espigas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 70px 40px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tarjeta-versiculo-rosas .verse-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 34px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(197, 155, 88, 0.45);
+  box-shadow: 0 8px 24px rgba(90, 70, 60, 0.08);
+}
+
+.tarjeta-versiculo-rosas .verse-text {
+  font-family: var(--font-serif);
+  font-size: clamp(21px, 3.2vw, 27px);
+  font-style: italic;
+  font-weight: 500;
+  color: #3d2b27;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.tarjeta-versiculo-rosas .verse-cite {
+  font-family: var(--font-script);
+  font-size: clamp(32px, 4.5vw, 42px);
+  color: var(--gold-dark);
   display: block;
+}
+
+@media (max-width: 600px) {
+  .tarjeta-versiculo-rosas {
+    padding: 50px 20px;
+  }
+  .tarjeta-versiculo-rosas .verse-inner {
+    padding: 24px 18px;
+  }
 }
 
 .media-frame {
