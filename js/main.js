@@ -5,6 +5,13 @@
 
 import { animate, createTimeline, stagger } from '../vendor/anime.esm.min.js';
 import { abrirSobre } from './sobre.js';
+import {
+  SHEETS_URL,
+  SHEETS_TOKEN,
+  SHEETS_URL_SIN_CONFIGURAR,
+  TIMEOUT_MS,
+  TELEFONO_WHATSAPP_NOVIOS
+} from './config.js';
 
 const root = document.documentElement;
 const motion = root.classList.contains('js-motion');
@@ -13,6 +20,35 @@ const D_FAST = 400;
 const D_BASE = 700;
 const D_SLOW = 1200;
 const STAGGER = 50;
+
+/* ── 0. Envío a Google Sheets (Simple Request text/plain para evitar CORS) ── */
+async function enviarASheets(datos) {
+  const control = new AbortController();
+  const timer = setTimeout(() => control.abort(), TIMEOUT_MS);
+
+  try {
+    const respuesta = await fetch(SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(datos),
+      signal: control.signal
+    });
+    clearTimeout(timer);
+
+    if (!respuesta.ok) {
+      throw new Error(`HTTP ${respuesta.status}`);
+    }
+
+    const resultado = await respuesta.json();
+    if (!resultado.ok) {
+      throw new Error(resultado.error || 'Respuesta negativa');
+    }
+    return resultado;
+  } catch (err) {
+    clearTimeout(timer);
+    throw err;
+  }
+}
 
 /* ── 1. Inicialización de Audio ────────────────────────────── */
 function initMusica() {
@@ -234,16 +270,28 @@ function initScrollReveal() {
   laterales.forEach(el => lateralObserver.observe(el));
 }
 
-/* ── 6. Formulario RSVP con Dinamismo y WhatsApp ─────────────── */
+/* ── 6. Formulario RSVP con Backend Sheets y WhatsApp Dual ─── */
 function initRSVP() {
   const campoAsistencia = document.getElementById('asistencia');
   const campoAcomp = document.getElementById('acomp');
   const grupoAcomp = document.getElementById('grupo-acomp');
   const contenedor = document.getElementById('contenedor-asistentes');
+  const btnEnviar = document.getElementById('enviar');
   const btnWA = document.getElementById('enviar-wa');
   const cajaConfirm = document.getElementById('confirm');
 
-  if (!campoAsistencia || !campoAcomp || !contenedor || !btnWA) return;
+  if (!campoAsistencia || !campoAcomp || !contenedor) return;
+
+  let enviando = false;
+  let registrado = false;
+
+  const notificar = (texto, esError = false) => {
+    cajaConfirm.textContent = texto;
+    cajaConfirm.className = `confirm on ${esError ? 'err' : ''}`;
+    if (motion) {
+      animate(cajaConfirm, { opacity: [0, 1], y: [6, 0], duration: D_FAST, ease: 'outExpo' });
+    }
+  };
 
   const renderizarCampos = () => {
     const esRechazo = campoAsistencia.value === 'no';
@@ -275,7 +323,7 @@ function initRSVP() {
       input.type = 'text';
       input.id = `asistente-${i + 1}`;
       input.className = 'input-asistente';
-      input.placeholder = i === 0 ? 'Ej: Juan Pérez y familia' : `Nombre del acompañante ${i}`;
+      input.placeholder = i === 0 ? 'Ej: Juan Pérez y familia' : `Nombre del acompañante ${i + 1}`;
       input.value = valoresActuales[i] || '';
 
       field.appendChild(label);
@@ -298,43 +346,125 @@ function initRSVP() {
   campoAcomp.addEventListener('change', renderizarCampos);
   renderizarCampos();
 
-  // Enviar a WhatsApp
-  btnWA.addEventListener('click', () => {
+  // Validación y obtención de lista completa de asistentes
+  const obtenerNombres = () => {
     const inputs = Array.from(contenedor.querySelectorAll('.input-asistente'));
-    const nombres = inputs.map(i => i.value.trim()).filter(Boolean);
+    const nombres = inputs.map(i => i.value.trim());
 
-    if (nombres.length === 0) {
-      cajaConfirm.textContent = 'Por favor escribe al menos el nombre de la persona titular.';
-      cajaConfirm.className = 'confirm on err';
+    if (!nombres[0]) {
+      notificar('Por favor escribe al menos el nombre de la Persona 1 (Titular).', true);
       inputs[0]?.focus();
-      return;
+      return null;
     }
 
-    const estadoMap = {
-      'si': '¡Sí, con mucha alegría confirmamos nuestra asistencia!',
-      'tarde': 'Llegaremos un poco tarde a la recepción, pero ahí estaremos para celebrar con ustedes.',
-      'no': 'Lamentablemente no podremos acompañarlos en esta ocasión, pero les deseamos la mayor bendición.'
-    };
+    const indiceFaltante = nombres.findIndex(n => !n);
+    if (indiceFaltante !== -1) {
+      notificar(`Por favor escribe el nombre de la Persona ${indiceFaltante + 1}.`, true);
+      inputs[indiceFaltante]?.focus();
+      return null;
+    }
 
-    const estadoTxt = estadoMap[campoAsistencia.value] || 'Confirmación de asistencia';
-    const listaNombres = nombres.map((n, idx) => `• ${n}`).join('\n');
+    return nombres;
+  };
 
-    const mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
-      `*Estado:* ${estadoTxt}\n\n` +
-      `*Personas confirmadas (${nombres.length}):*\n${listaNombres}\n\n` +
-      `¡Muchas felicidades y bendiciones en su matrimonio! ✨`;
+  // 1. Envío directo a Google Sheets
+  if (btnEnviar) {
+    btnEnviar.addEventListener('click', async () => {
+      if (enviando || registrado) return;
 
-    // Número de contacto de los novios
-    const telefonoNovios = '573100000000';
-    const urlWA = `https://wa.me/${telefonoNovios}?text=${encodeURIComponent(mensaje)}`;
+      const nombres = obtenerNombres();
+      if (!nombres) return;
 
-    cajaConfirm.textContent = '¡Redirigiendo a WhatsApp para enviar tu confirmación!';
-    cajaConfirm.className = 'confirm on';
+      if (SHEETS_URL === SHEETS_URL_SIN_CONFIGURAR) {
+        notificar('Aún no se ha vinculado la URL de Google Sheets en js/config.js. Puedes usar mientras tanto el botón de WhatsApp.', true);
+        return;
+      }
 
-    setTimeout(() => {
-      window.open(urlWA, '_blank');
-    }, 600);
-  });
+      const esRechazo = campoAsistencia.value === 'no';
+      const textoAsistencia = campoAsistencia.options[campoAsistencia.selectedIndex].text;
+      const titular = nombres[0];
+      const total = nombres.length;
+
+      enviando = true;
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = 'Guardando en la lista…';
+
+      try {
+        for (let i = 0; i < total; i++) {
+          const asignacion = esRechazo
+            ? 'No asiste'
+            : (total === 1 ? 'Solo titular (1 persona)' : `Puesto ${i + 1} de ${total} (Grupo: ${titular})`);
+
+          await enviarASheets({
+            token: SHEETS_TOKEN,
+            nombre: nombres[i],
+            asistencia: textoAsistencia,
+            personas: asignacion
+          });
+        }
+
+        registrado = true;
+        btnEnviar.textContent = '✓ ¡Registrado con éxito!';
+        campoAsistencia.disabled = true;
+        campoAcomp.disabled = true;
+        contenedor.querySelectorAll('input').forEach(inp => { inp.disabled = true; });
+        notificar(`¡Muchas gracias, ${titular.split(' ')[0]}! Tu asistencia quedó registrada en la lista oficial.`);
+      } catch (err) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = 'Reintentar confirmación';
+        notificar('Hubo un inconveniente al conectar con la lista. Por favor reintenta o confirma vía WhatsApp.', true);
+      } finally {
+        enviando = false;
+      }
+    });
+  }
+
+  // 2. Envío a WhatsApp (con copia desatendida a Sheets si está configurado)
+  if (btnWA) {
+    btnWA.addEventListener('click', () => {
+      const nombres = obtenerNombres();
+      if (!nombres) return;
+
+      const estadoMap = {
+        'si': '¡Sí, con mucha alegría confirmamos nuestra asistencia!',
+        'tarde': 'Llegaremos un poco tarde a la recepción, pero ahí estaremos para celebrar con ustedes.',
+        'no': 'Lamentablemente no podremos acompañarlos en esta ocasión, pero les deseamos la mayor bendición.'
+      };
+
+      const estadoTxt = estadoMap[campoAsistencia.value] || 'Confirmación de asistencia';
+      const listaNombres = nombres.map((n, idx) => `• ${n}`).join('\n');
+
+      const mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
+        `*Estado:* ${estadoTxt}\n\n` +
+        `*Personas confirmadas (${nombres.length}):*\n${listaNombres}\n\n` +
+        `¡Muchas felicidades y bendiciones en su matrimonio! ✨`;
+
+      const urlWA = `https://wa.me/${TELEFONO_WHATSAPP_NOVIOS}?text=${encodeURIComponent(mensaje)}`;
+
+      // Si Sheets ya está configurado, guardamos silenciosamente en segundo plano
+      if (SHEETS_URL !== SHEETS_URL_SIN_CONFIGURAR && !registrado) {
+        const esRechazo = campoAsistencia.value === 'no';
+        const titular = nombres[0];
+        const total = nombres.length;
+        for (let i = 0; i < total; i++) {
+          const asignacion = esRechazo
+            ? 'No asiste'
+            : (total === 1 ? 'Solo titular (1 persona)' : `Puesto ${i + 1} de ${total} (Grupo: ${titular})`);
+          enviarASheets({
+            token: SHEETS_TOKEN,
+            nombre: nombres[i],
+            asistencia: estadoTxt,
+            personas: asignacion
+          }).catch(() => {});
+        }
+      }
+
+      notificar('¡Redirigiendo a WhatsApp para enviar tu confirmación!');
+      setTimeout(() => {
+        window.open(urlWA, '_blank');
+      }, 500);
+    });
+  }
 }
 
 /* ── 7. Arranque Global ──────────────────────────────────────── */

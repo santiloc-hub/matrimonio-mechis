@@ -390,9 +390,17 @@
                 <!-- Asistentes dinámicos inyectados por JS -->
               </div>
 
-              <button class="btn-wa" id="enviar-wa" type="button">
-                <i class="fa-brands fa-whatsapp fa-xl"></i> Confirmar Asistencia por WhatsApp
-              </button>
+              <!-- BOTONES DE CONFIRMACIÓN: EN LÍNEA A SHEETS Y/O WHATSAPP -->
+              <div class="rsvp-actions">
+                <button class="btn-rsvp-direct" id="enviar" type="button">
+                  <i class="fa-solid fa-circle-check fa-lg"></i>
+                  <span>Confirmar en la Lista</span>
+                </button>
+                <button class="btn-wa" id="enviar-wa" type="button">
+                  <i class="fa-brands fa-whatsapp fa-xl"></i>
+                  <span>Confirmar por WhatsApp</span>
+                </button>
+              </div>
               
               <p class="confirm" id="confirm" role="status" aria-live="polite"></p>
             </div>
