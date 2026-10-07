@@ -60,7 +60,7 @@ matrimonio mechis/
 | **00:10 - 00:22** | Versículo Bíblico | Marco floral acuarelado: *"El amor nunca se da por vencido..."* (1 Corintios 13:7). |
 | **00:23 - 00:35** | Familias y Padrinos | *"Con la bendición de Dios y nuestros padres"* (Padres de novio, novia y padrinos). |
 | **00:36 - 00:46** | Las Alianzas | Foto de manos entrelazadas con argollas, 3:00 PM, 19 DIC 2026. |
-| **00:47 - 00:58** | Ceremonia y Recepción | Iglesia San Jerónimo de Nobsa (3:00 PM) + Hacienda Bella Luna (5:30 PM). |
+| **00:47 - 00:58** | Ceremonia y Recepción | Iglesia San Jerónimo de Nobsa (3:00 PM) + Hacienda Bella Luna (5:00 PM). |
 | **00:59 - 01:10** | Protocolo | Vestimenta: Formal (Traje/Vestido) + Lluvia de Sobres. |
 | **01:11 - 01:20** | Despedida | *"TE ESPERAMOS"* con foto de los novios sonriendo de frente. |
 
