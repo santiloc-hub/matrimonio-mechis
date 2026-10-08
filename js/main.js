@@ -439,8 +439,8 @@ function initRSVP() {
       let mensaje = '';
 
       if (valAsistencia === 'si') {
-        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
-          `¡Hola Melquisedec y Briyith! ✨\n` +
+        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & LIZEH*\n\n` +
+          `¡Hola Melquisedec y Lizeh! ✨\n` +
           `Queremos confirmar con gran alegría que *SÍ los acompañaremos* en la celebración de su matrimonio.\n\n` +
           `📋 *Detalles de la confirmación:*\n` +
           `• *Titular:* ${nombres[0]}\n` +
@@ -454,8 +454,8 @@ function initRSVP() {
         mensaje += `¡Estamos muy emocionados de compartir este día tan especial junto a ustedes! Que Dios bendiga su nuevo hogar. 🥂✨`;
 
       } else if (valAsistencia === 'tarde') {
-        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & BRIYITH*\n\n` +
-          `¡Hola Melquisedec y Briyith! ✨\n` +
+        mensaje = `💍 *CONFIRMACIÓN DE ASISTENCIA — BODA MELQUISEDEC & LIZEH*\n\n` +
+          `¡Hola Melquisedec y Lizeh! ✨\n` +
           `Confirmamos nuestra asistencia a su boda. *Llegaremos un poco más tarde, directamente a la recepción* para celebrar y brindar con ustedes en la Hacienda Bella Luna.\n\n` +
           `📋 *Detalles de la confirmación:*\n` +
           `• *Titular:* ${nombres[0]}\n` +
@@ -470,8 +470,8 @@ function initRSVP() {
 
       } else {
         // Rechazo cordial / Excusa
-        mensaje = `🕊️ *RESPUESTA DE INVITACIÓN — BODA MELQUISEDEC & BRIYITH*\n\n` +
-          `¡Hola Melquisedec y Briyith! ✨\n` +
+        mensaje = `🕊️ *RESPUESTA DE INVITACIÓN — BODA MELQUISEDEC & LIZEH*\n\n` +
+          `¡Hola Melquisedec y Lizeh! ✨\n` +
           `Agradecemos de todo corazón la hermosa invitación a su matrimonio.\n\n` +
           `Lamentablemente en esta ocasión *no podremos acompañarlos físicamente* a la celebración.\n\n` +
           `📋 *Datos:*\n` +
