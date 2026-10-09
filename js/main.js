@@ -14,6 +14,7 @@ import {
 } from './config.js';
 
 const root = document.documentElement;
+root.classList.add('js-motion-ready');
 const motion = root.classList.contains('js-motion');
 
 const D_FAST = 400;
@@ -520,13 +521,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   initHeroGlints();
   initDesplegables();
   initRSVP();
+  initScrollReveal();
 
   // Apertura de sobre en 3D
   await abrirSobre();
-
-  // Una vez abierto el sobre, activamos las animaciones de la página
-  root.classList.add('js-motion-ready');
-  initScrollReveal();
 
   // Animación de entrada triunfal del Hero
   if (motion) {

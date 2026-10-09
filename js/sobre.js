@@ -26,12 +26,18 @@ export function abrirSobre() {
 
   return new Promise((resolve) => {
     let abierto = false;
+    let terminado = false;
     let latido = null;
 
     const terminar = () => {
+      if (terminado) return;
+      terminado = true;
       window.removeEventListener('keydown', porTecla);
       root.classList.remove('sobre-activo');
-      escena.remove();
+      document.body.classList.remove('sobre-activo');
+      if (escena && escena.parentNode) {
+        escena.remove();
+      }
       resolve();
     };
 
@@ -39,6 +45,9 @@ export function abrirSobre() {
       if (abierto) return;
       abierto = true;
       if (latido) latido.pause();
+
+      // Desactivar puntero para evitar toques duplicados
+      escena.style.pointerEvents = 'none';
 
       const audio = document.getElementById('musica-boda');
       const btnMusica = document.getElementById('btn-musica');
@@ -51,6 +60,9 @@ export function abrirSobre() {
           }
         }).catch(() => {});
       }
+
+      // Temporizador de respaldo absoluto: garantiza desbloqueo de scroll incluso si anime.js se suspende
+      setTimeout(terminar, 2800);
 
       const tl = createTimeline({ defaults: { ease: 'outExpo' }, onComplete: terminar });
 
@@ -74,6 +86,10 @@ export function abrirSobre() {
 
     escena.addEventListener('click', abrir);
     escena.addEventListener('touchstart', abrir, { passive: true });
+    if (boton) {
+      boton.addEventListener('click', abrir);
+      boton.addEventListener('touchstart', abrir, { passive: true });
+    }
     window.addEventListener('keydown', porTecla);
 
     if (boton) {
